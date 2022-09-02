@@ -1,0 +1,64 @@
+{% extends "user/base2.html" %} 
+{% block pageContent %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <style>
+        
+
+    </style>
+</head>
+
+
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card py-2">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="card-title mb-0">View Payment</h4>
+            
+        </div>
+    </div>
+</div>
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered" style="text-align: center;">
+                
+                <thead>
+                    <tr>
+                        
+                      <th class="text-center py-2">Slno </th>
+                        
+                        <th class="text-center py-2">Amount</th>
+                       
+                        <th class="text-center py-2">Date</th>
+                        <th class="text-center py-2">Attached File</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in payment %}
+                    <tr >
+                      
+                       <td class="px-2 py-1 text-center" >{{forloop.counter}}</td>
+                        <td class="px-2 py-1 text-center" >{{i.Amount}}</td>
+                        <td class="px-2 py-1 text-center" >{{i.Payment_Date | date:'d-m-Y'  }}</td>
+                        <td class="px-2 py-1 text-center" ><a download  href=" {{i.File.url}}" class=" primary">Download</a></td>
+                        
+                        
+                        
+                    </tr>
+                    {% endfor %}
+
+                               
+
+                </tbody>
+            </table>
+ 
+        </div>
+    </div>
+</div>
+
+
+{% endblock pageContent %} 
+

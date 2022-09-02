@@ -1,0 +1,134 @@
+{% extends "user/base2.html" %} 
+{% block pageContent %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+    <style>
+       /* .modal-content{
+        width: 350px;
+       } */
+    </style>
+</head>
+
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <hr class="w-100">
+</div>
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+<div class="card   " style="margin-top:50px; ">
+    
+  
+    <div class="imgBox">
+       <img src="{{emp.Image.url}}" alt="">
+    </div>
+    
+    <div class="content">
+      <div class="details">
+           <h2>{{user.first_name}} {{user.last_name}}</h2>
+      <span>{{emp.Department.Department_Name }}</span>
+
+        <div class='data '>
+
+          
+           
+             
+          
+
+        
+        </div>
+        <div class="box1">
+        <div class='cta'>
+          
+            <h4 style="margin-left: 20px;  ">
+              Gender 
+            </h4>
+            <span style="margin-left: 50px; ">{{emp.Gender}}</span><br>
+          
+        </div>
+        <div class='cta'>
+          
+          <h4 style="margin-left: 20px;  ">
+           Date of brith
+          </h4>
+          <span style="margin-left: 50px;">{{emp.DOB }}</span><br>
+        
+      </div>
+      <div class='cta'>
+          
+        <h4 style="margin-left: 20px;  ">
+          Category 
+        </h4>
+        <span style="margin-left: 50px;">{{emp.Category_Name}}</span><br>
+      
+    </div>
+    <div class='cta'>
+          
+      <h4 style="margin-left: 20px;  ">
+        Address
+      </h4>
+      <span style="margin-left: 50px;">{{emp.Address}}</span><br>
+    
+  </div>
+  <div class='cta'>
+          
+    <h4 style="margin-left: 20px;  ">
+      State
+    </h4>
+    <span style="margin-left: 70px;">{{emp.State}}</span><br>
+  
+</div>
+     
+        
+
+<div class='cta'>
+          
+  <h4 style="margin-left: 20px;  ">
+    Address
+  </h4>
+  <span style="margin-left: 50px;">{{emp.Postcode}}</span><br>
+
+</div>
+<div class='cta'>
+          
+  <h4 style="margin-left: 20px;  ">
+    City
+  </h4>
+  <span style="margin-left: 90px;">{{emp.City}}</span><br>
+
+</div>
+<div class='cta'>
+          
+  <h4 style="margin-left: 20px;  ">
+    Country
+  </h4>
+  <span style="margin-left: 60px;">{{emp.Country}}</span><br>
+
+</div>
+      
+</div>  
+     
+        <!-- <div class='cta'>
+          <button>Follow</button>
+          <button>Message</button>
+        </div> -->
+      </div>
+
+      
+   
+    </div>
+    
+  </div>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+</div>
+
+
+
+
+
+
+{% endblock pageContent %} 
+

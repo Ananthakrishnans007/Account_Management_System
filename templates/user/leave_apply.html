@@ -1,0 +1,75 @@
+{% extends "user/base2.html" %} 
+{% block pageContent %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <style>
+        .form-control{
+            width: 1
+            00%;
+        }
+       .modal-content{
+        width: 400px;
+       }
+
+    </style>
+</head>
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card py-3">
+        <div class="d-flex justify-content-between">
+            <h4 class="card-title mb-0">Leave Apply</h4>
+        </div>
+    </div>
+</div>
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <hr class="w-100">
+</div>
+
+
+    <div class="modal-dialog mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12 " role="document" style="margin-top: -5px;">
+      <div class="modal-content " >
+        
+        <form action="{% url 'leave' %}" method="POST" >{% csrf_token %}
+        <div class="modal-body" >
+            
+            
+             
+                  <div class="form-group col-md-12 input_field">
+                    
+                    <label style="font-size: 18px;">FROM</label>
+                    <input type="date" class="form-control input  " name="s_date"  >
+                       
+                  </div>
+                  <div class="form-group col-md-12 input_field">
+                    
+                    <label style="font-size: 18px;">TO</label>
+                    <input type="date" class="form-control input  " name="e_date"  >
+                       
+                  </div>
+                  <div class="form-group col-md-12 input_field">
+                    <input type="radio" name="leave"  value="Half Day" > Half Day<br>
+                    <input type="radio"  name="leave" value="Full Day" > Full Day
+                  </div>
+
+                  <div class="form-group col-md-12 input_field">
+                    
+                    <label style="font-size: 18px;">REASON</label>
+                    <textarea name="reason" class="form-control"  placeholder="Leave Reason" style="height: 100px;"></textarea> 
+                  </div>
+
+                    
+        </div>
+              <center>
+            
+            <input type="submit" class="btn btn-info " value="Submit" style="margin-bottom: 13px;">
+        
+         </center>
+        </form>
+      </div>
+    </div>
+  
+
+
+
+{% endblock pageContent %}

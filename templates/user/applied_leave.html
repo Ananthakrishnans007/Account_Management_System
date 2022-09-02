@@ -1,0 +1,67 @@
+{% extends "user/base2.html" %} 
+{% block pageContent %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <style>
+        
+
+    </style>
+</head>
+
+
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card py-2">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="card-title mb-0">Applied Leave</h4>
+            
+        </div>
+    </div>
+</div>
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered" style="text-align: center;">
+                
+                <thead>
+                    <tr>
+                        
+                      <th class="text-center py-2">Slno </th>
+                        <th class="text-center py-2"> From Date</th>
+                        <th class="text-center py-2">To Date</th>
+                        <th class="text-center py-2">Leave</th>
+                        <th class="text-center py-2">Reason</th>
+                        <th class="text-center py-2">Status</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in leave %}
+                    <tr >
+                      
+                       <td class="px-2 py-1 text-center" >{{forloop.counter}}</td>
+                        <td class="px-2 py-1 text-center" >{{i.From | date:'d-m-Y'}}</td>
+                        <td class="px-2 py-1 text-center" >{{i.To | date:'d-m-Y'}}</td>
+                        <td class="px-2 py-1 text-center" >{{i.Leave  }}</td>
+                        <td class="px-2 py-1 text-center" >{{i.Reason }}</td>
+                        <td class="px-2 py-1 text-center" >{{i.status}}</td>
+                        
+                        
+                        
+                    </tr>
+                    {% endfor %}
+
+                               
+
+                </tbody>
+            </table>
+ 
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock pageContent %} 
+

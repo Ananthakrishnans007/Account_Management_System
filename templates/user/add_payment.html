@@ -1,0 +1,77 @@
+{% extends "user/base2.html" %} 
+{% block pageContent %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <style>
+        .form-control{
+            width: 1
+            00%;
+        }
+       .modal-content{
+        width: 400px;
+       }
+
+    </style>
+</head>
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card py-3">
+        <div class="d-flex justify-content-between">
+            <h4 class="card-title mb-0">Add Payment</h4>
+        </div>
+    </div>
+</div>
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <hr class="w-100">
+</div>
+
+
+    <div class="modal-dialog mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12 " role="document">
+      <div class="modal-content " >
+        
+        <form action="{% url 'user_payment' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="modal-body" >
+            
+            
+             
+                  <div class="form-group col-md-12 input_field">
+                    
+                    <label style="font-size: 18px;">Amount</label>
+                    <input type="text" class="form-control input  " name="amount"  >
+                       
+                  </div>
+                  <div class="form-group col-md-12 input_field">
+                    
+                    <label style="font-size: 18px;">Payment Date</label>
+                    <input type="date" class="form-control input  " name="date"  >
+                       
+                  </div>
+
+                  <div class="form-group col-md-12 input_field">
+                    
+                    <label style="font-size: 18px;">Attach File</label>
+                    <input type="file" class="form-control input  " name="file"  >
+                       
+                  </div>
+                
+                
+                   
+                  
+                  
+                
+                    
+        </div>
+              <center>
+            
+            <input type="submit" class="btn btn-info " value="Submit" style="margin-bottom: 13px;">
+        
+         </center>
+        </form>
+      </div>
+    </div>
+  
+
+
+
+{% endblock pageContent %}

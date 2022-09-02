@@ -1,0 +1,255 @@
+{% extends "user/base2.html" %}
+ 
+ {% block pageContent %}
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card">
+        <div class="d-flex justify-content-between">
+            <h4 class="card-title mb-0">Home Page</h4>
+        </div>
+    </div>
+</div>
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <hr class="w-100">
+</div>
+
+
+
+
+ {% if not user.first_name  %}
+
+
+ <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-6-tablet">
+    
+  <div class="mdc-card info-card info-card--success " data-toggle="modal" data-target="#exampleModal" style="cursor:pointer;">
+      
+      <div class="card-inner" style="height:80px" >
+          
+          <h5 class="card-title " style="font-size: 25px;">Complete profile</h5>
+          <!-- <h5 class="font-weight-light pb-2 mb-1 border-bottom"></h5>
+          <p class="tx-12 text-muted">Over All Count of Departments</p> -->
+          <div class="card-icon-wrapper">
+              <i class="material-icons">person_add</i>
+          </div>
+      
+      </div>
+  
+  </div>
+
+</div>
+ 
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Complete Profile</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+        <form action="{% url 'emp_detailes' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label >First Name</label>
+                <input type="text" class="form-control" name="f_name" placeholder="First Name">
+              </div>
+              <div class="form-group col-md-6">
+                <label >Last Name</label>
+                <input type="text" class="form-control" name="l_name"  placeholder="Last Name">
+              </div>
+            </div>
+
+            <div class="form-row">
+            <div class="form-group col-md-6">
+                <label >Date Of Brith</label>
+                <input type="date" class="form-control" name="dob"  placeholder="Date Of Brith">
+              </div>
+              <div class="form-group col-md-6">
+                <label >Gender</label><br>
+                <input class="" type="radio" name="gender"  value="Male"> &nbsp; Male
+                &nbsp;
+                <input class="" type="radio" name="gender"  value="Female"> &nbsp; Female
+                
+                
+
+
+              </div>
+
+              </div>
+              <div class="form-row">
+            <div class="form-group col-md-6">
+              <label >Address</label>
+              <input type="text" class="form-control" name="address"  placeholder="Address">
+
+            </div>
+            <div class="form-group col-md-6">
+                <label>Country</label>
+                <input type="text" class="form-control" name="country" placeholder="Country">
+                
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label >City</label>
+                <input type="text" class="form-control" name="city" placeholder="City">
+              </div>
+              <div class="form-group col-md-4">
+                <label>State</label>
+                <input type="text" class="form-control" name="state" placeholder="State">
+                
+              </div>
+              <div class="form-group col-md-3">
+                <label >Zip</label>
+                <input type="text" class="form-control" name="zip" placeholder="Zip">
+              </div>
+              
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label >Department</label><br>
+                <select name="deprt" class="form-control"  style="width: 100%;">
+                  <option >--Select--</option>
+                  {% for i in department%}
+                  <option value="{{i.id}}" >{{i.Department_Name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+                <div class="form-group col-md-6">
+                    <label >Mobile Number</label>
+                    <input type="text" class="form-control" name="phone"  placeholder="Mobile Number">
+                  </div>
+                </div>
+            <div class="form-row">
+            <div class="form-group col-md-6">
+                <label >Plus Two Certificate</label>
+                <input type="file" class="form-control-file"  name="file1" >
+              </div>
+
+              <div class="form-group col-md-6">
+                <label >Degree Certificate</label>
+                <input type="file" class="form-control-file" name="file2" >
+              </div>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-6">
+                <label >Pg Certificate</label>
+                <input type="file" class="form-control-file" name="file3" >
+              </div>
+
+              <div class="form-group col-md-6">
+                <label >Image</label>
+                <input type="file" class="form-control-file" name="file4" >
+              </div>
+            </div>
+            
+          
+       </div>
+       <div class="modal-footer justify-content-center" >
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+         <button type="submit" class="btn btn-primary">Submit</button>
+       </div>
+
+    </form>
+     </div>
+   </div>
+ </div>
+ 
+ 
+
+{% else %}
+
+
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet">
+  <div class="mdc-card info-card info-card--primary">
+      <a href="{% url 'user_task' %}" style="text-decoration: none;">
+      <div class="card-inner">
+          <h5 class="card-title">Tasks</h5>
+          <h5 class="font-weight-light pb-2 mb-1 border-bottom"></h5>
+          <p class="tx-40 text -success"><strong>{{task_count}}</strong></p>
+          <div class="card-icon-wrapper">
+              <i class="material-icons">work</i>
+          </div>
+      </a>
+      </div>
+  </div>
+</div>
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet">
+  <div class="mdc-card info-card info-card--info">
+      <a href="{% url 'topic' %}" style="text-decoration: none;">
+      <div class="card-inner">
+          <h5 class="card-title">Topic</h5>
+          <h5 class="font-weight-light pb-2 mb-1 border-bottom"></h5>
+          <p class="tx-40 text -success"><strong>{{topic_count}}</strong></p>
+          <div class="card-icon-wrapper">
+              <i class="material-icons">list</i>
+          </div>
+      </div>
+  </a>
+  </div>
+</div>
+
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet">
+  <div class="mdc-card info-card info-card--danger">
+      <a href="{% url 'attendance' %}" style="text-decoration: none;">
+      <div class="card-inner">
+          <h5 class="card-title">Attendance</h5>
+          <h5 class="font-weight-light pb-2 mb-1 border-bottom"></h5>
+          <!-- <p class="tx-40 text -success"><strong>{{topic_count}}</strong></p> -->
+          <div class="card-icon-wrapper">
+              <i class="material-icons">assessment</i>
+          </div>
+      </div>
+  </a>
+  </div>
+</div>
+
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet">
+  <div class="mdc-card info-card info-card--warning">
+      <a href="{% url 'report' %}" style="text-decoration: none;">
+      <div class="card-inner">
+          <h5 class="card-title">Report</h5>
+          <h5 class="font-weight-light pb-2 mb-1 border-bottom"></h5>
+          <p class="tx-40 text -success"><strong>{{report_count}}</strong></p>
+          <div class="card-icon-wrapper">
+              <i class="material-icons">report</i>
+          </div>
+      </div>
+  </a>
+  </div>
+</div>
+
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet">
+  <div class="mdc-card info-card info-card--success">
+      <a href="{% url 'payment' %}" style="text-decoration: none;">
+      <div class="card-inner">
+          <h5 class="card-title">Payment</h5>
+          <h5 class="font-weight-light pb-2 mb-1 border-bottom"></h5>
+          <p class="tx-40 text -success"><strong>{{payment_count}}</strong></p>
+          <div class="card-icon-wrapper">
+              <i class="material-icons">payment</i>
+          </div>
+      </div>
+  </a>
+  </div>
+</div>
+
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet">
+  <div class="mdc-card info-card info-card--primary">
+      <a href="{% url 'apply_leave' %}" style="text-decoration: none;">
+      <div class="card-inner">
+          <h5 class="card-title">Leave</h5>
+          <h5 class="font-weight-light pb-2 mb-1 border-bottom"></h5>
+          <p class="tx-40 text -success"><strong>{{leave_count}}</strong></p>
+          <div class="card-icon-wrapper">
+              <i class="material-icons">message</i>
+          </div>
+      </div>
+  </a>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock pageContent %}

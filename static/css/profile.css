@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* body {
+ 
+  background: linear-gradient(45deg, #3CD3C1, #F231A5);
+} */
+
+.card {
+  position: relative;
+  background: #fff;
+  width: 350px;
+  height: 190px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  transition: height 0.5s;
+  margin: auto;
+  
+  
+
+}
+.card:hover {
+  height: 580px;
+}
+
+.imgBox {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  top: -50px;
+  transform: translateX(-50%);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.35);
+  transition: all 0.5s;
+}
+
+.imgBox img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card:hover .imgBox {
+  width: 250px;
+  height: 250px;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 40px;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+ 
+}
+
+.content .details {
+  width: 100%;
+  transform: translateY(280px);
+  transition: all 0.5s;
+  
+}
+
+.card:hover .content .details {
+  transform: translateY(0px);
+}
+
+.content .details h2 {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #555;
+  line-height: 1.2em;
+}
+
+.content .details span {
+  font-size: 0.75em;
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+.data {
+  display: flex;
+  justify-content: space-between;
+  
+  margin: 20px 0;
+  
+  
+  
+}
+.cta h4 {
+  display: flex;
+  flex-direction: column;
+  font-size: 1em;
+  color: #555;
+  line-height: 1.2em;
+  font-weight: 600;
+ 
+ 
+}
+
+.cta {
+  display: flex;
+  justify-content: space-between;
+}
+.cta button {
+  padding: 10px 30px;
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 500;
+  background: linear-gradient(45deg, #3CD3C1, #F231A5);
+  color: #fff;
+  transition: 0.3s;
+}
+.cta button:hover {
+  filter: brightness(0.9);
+}
+.cta button:last-child {
+  background: #fff;
+  border: 1px solid #999;
+  color: #999;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,157 @@
+{% extends "administrator/base1.html" %} 
+{% block pageContent %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <style>
+        
+
+    </style>
+</head>
+
+
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card py-2">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="card-title mb-0">Department :- {{department}}</h4>
+            
+        </div>
+    </div>
+</div>
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered" style="text-align: center;">
+                
+                <thead>
+                    <tr>
+                        
+                      <th class="text-center py-2">Slno </th>
+                        <th class="text-center py-2"> Employee Name</th>
+                        <th class="text-center py-2">Category</th>
+                        <th class="text-center py-2">Image</th>
+                        <th class="text-center py-2">Address</th>
+                        <th class="text-center py-2">Mobile</th>
+                        <th class="text-center py-2">Plus Two</th>
+                        <th class="text-center py-2">Degree</th>
+                        <th class="text-center py-2">Pg</th>
+                        <th class="text-center py-2">Action</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in employee %}
+                    <tr >
+                      
+                       <td class="px-2 py-1 text-center" >{{forloop.counter}}</td>
+                        <td class="px-2 py-1 text-center" >{{i.user.first_name}}  {{i.user.last_name}}</td>
+                        
+                        <td class="px-2 py-1 text-center" >{{i.Category_Name}}</td>
+                        <td class="px-2 py-1 text-center" ><img src="{{i.Image.url}}" width="50px" height="40px"></td>
+                        <td class="px-2 py-1 text-center" >{{i.Address}}</td>
+                        <td class="px-2 py-1 text-center" >{{i.mobile_number}}</td>
+
+                        <td class="px-2 py-1 text-center" ><a download  href=" {{i.Plus_two.url}}" class=" primary">Download</a></td>
+                        <td class="px-2 py-1 text-center" ><a download  href=" {{i.Degree.url}}" class=" primary">Download</a></td>
+                        <td class="px-2 py-1 text-center" ><a download  href=" {{i.Pg.url}}" class=" primary">Download</a></td>
+                        
+
+                        <td class="px-2 py-1 text-center">
+                            <a class="mdc-button mdc-button--raised p-1 icon-button filled-button--light mdc-ripple-upgraded edit-data" data-toggle="modal" data-target="#edit-{{forloop.counter}}">
+                                <i class="material-icons mdc-button__icon">edit</i>
+                            </a>
+                            <button class="mdc-button mdc-button--raised p-1 icon-button filled-button--danger mdc-ripple-upgraded delete-data" type="button" data-toggle="modal" data-target="#delete-{{forloop.counter}}" >
+                                <i class="material-icons mdc-button__icon">deleteoutline</i>
+                            </button>
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    {% endfor %}
+
+                               
+
+                </tbody>
+            </table>
+ 
+        </div>
+    </div>
+</div>
+
+{% for i in employee %}
+
+<!-- edit Modal HTML -->
+
+     <div class="modal fade" id="edit-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 8%;" >
+    <div class="modal-dialog " role="document">
+      <div class="modal-content " >
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Status</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{% url 'employee_status' i.id %}" method="POST" >{% csrf_token %}
+        <div class="modal-body" >
+            
+            
+                
+                  <div class="form-group col-md-12 input_field">
+                    <label style="font-size: 18px;">Status</label>
+                   <select name="status" class ="form-control form-control-sm ">
+                    <option value="Trainee">Trainee</option>
+                    <option value="Employee">Employee</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Trainer">Trainer</option>
+                    
+                   </select>
+                  </div>
+                
+                    
+        </div>
+              
+                
+        
+        <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+            <input type="submit" class="btn btn-info" value="Save">
+        </div>
+      
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+
+  
+    
+<!-- Delete Modal HTML -->
+{% for i in employee %}
+<div id="delete-{{forloop.counter}}" class="modal fade" style="margin-top: 5%;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">						
+                    <h4 class="modal-title">Delete Course</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">					
+                    <p>Are you sure you want to delete these Records?</p>
+                    <p class="text-warning"><strong>{{ i.user.first_name}} {{ i.user.last_name}}  &nbsp; information are Delete</strong></p>
+                </div>
+                <div class="modal-footer">
+                    
+                    <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel">
+                    <a href="{% url 'employee_delete' i.id %}" type="submit" class="btn btn-danger" >Delete</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock pageContent %} 
+
